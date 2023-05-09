@@ -112,7 +112,7 @@ class Tester(Trainer):
 
                     img = cv2.resize(img, (512, 512), interpolation=cv2.INTER_LINEAR)
                     cv2.imwrite(
-                        f"save_picture/img{file_path}.png", np.uint8(img))
+                        f"save_picture/img{file_path}.png", cv2.cvtColor(np.uint8(img), cv2.COLOR_BGR2RGB))
                     # cv2.imwrite(
                     #     f"save_picture/gt{i}.png", np.uint8(gt.cpu().numpy()*255))
                     # cv2.imwrite(
@@ -121,5 +121,6 @@ class Tester(Trainer):
                     #     f"save_picture/pre_b{i}.png", np.uint8(predict_b*255))
                     # image = np.uint8(img.cpu().numpy()*255)
                     cv2.imwrite(
-                        f"save_picture/pre_snow{file_path}.png",np.uint8(self.snow(img,predict_b,0.3)))
+                        f"save_picture/pre_snow{file_path}.png",cv2.cvtColor( np.uint8(self.snow(img,predict_b,0.3)),cv2.COLOR_BGR2RGB))
+                        
                     
